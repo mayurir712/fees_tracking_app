@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <!-- Page Header -->
+  <div class="page-header text-center">
+    <h2>Package Master</h2>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Filter / Actions Section -->
+  <div class="filter-section d-flex flex-wrap justify-content-between align-items-center mb-3">
+    <div>
+      <button class="btn-filter active">All Packages</button>
+    </div>
+    <div>
+      <button class="add-btn">+ Add Package</button>
+    </div>
+  </div>
+
+  <!-- Packages Cards -->
+  <div class="row">
+    <div class="col-md-4" *ngFor="let pkg of packages">
+      <div class="master-card">
+        <div class="master-card-header">
+          <span class="master-type">{{ pkg.packageName }}</span>
+          <div>
+            <button class="btn-action btn-edit">Edit</button>
+            <button class="btn-action btn-delete">Delete</button>
+          </div>
+        </div>
+        <div class="master-values">
+          <span class="value-badge">One-Time: {{ pkg.oneTimeTotalCost | number }}</span>
+          <span class="value-badge">EMI: {{ pkg.emiTotalCost | number }}</span>
+          <span class="value-badge">Branches: {{ pkg.maxBranches }}</span>
+          <span class="value-badge">Students: {{ pkg.maxStudents }}</span>
+          <span class="value-badge">SMS: {{ pkg.isSmsAlert ? 'Yes' : 'No' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
